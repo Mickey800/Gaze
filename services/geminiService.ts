@@ -5,7 +5,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 /**
  * High-speed pre-calibration for real-time UI feedback.
  */
-export async function preCalibrateIPD(base64Image) {
+export async function preCalibrateIPD(base64Image: string) {
   const response = await ai.models.generateContent({
     model: 'gemini-flash-lite-latest',
     contents: {
@@ -37,7 +37,7 @@ export async function preCalibrateIPD(base64Image) {
 /**
  * Spatial Biometric Authentication.
  */
-export async function verifyBiometricIdentity(base64Image) {
+export async function verifyBiometricIdentity(base64Image: string) {
   const response = await ai.models.generateContent({
     model: 'gemini-3-pro-preview',
     contents: {
@@ -67,7 +67,7 @@ export async function verifyBiometricIdentity(base64Image) {
 /**
  * Clinical grade IPD analysis using Structured Light Lattice.
  */
-export async function analyzeIPD(base64Image) {
+export async function analyzeIPD(base64Image: string) {
   const response = await ai.models.generateContent({
     model: 'gemini-3-pro-preview',
     contents: {
@@ -127,7 +127,7 @@ export async function analyzeIPD(base64Image) {
   return JSON.parse(response.text || "{}");
 }
 
-export async function chatWithExpert(message, history, ipd, base64Image) {
+export async function chatWithExpert(message: string, history: any[], ipd: number, base64Image: string) {
   const response = await ai.models.generateContent({
     model: 'gemini-3-pro-preview',
     contents: [
